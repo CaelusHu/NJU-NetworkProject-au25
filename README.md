@@ -88,3 +88,7 @@
     ```
 
     保持模块之间只通过 request/response 对象通信，不要直接访问 socket。
+
+### User 部分 （负责人：周立涛 241250098）
+
+1. UserService.java ----处理注册和登录请求 

@@ -69,7 +69,7 @@ public class ClientHandler implements Runnable {
                 // 3) 将请求交给路由模块处理（router 返回 HttpResponse）
                 HttpResponse response;
                 try {
-                    response = router.handle(rawRequest);
+                    response = router.route(HttpRequestParser.parse(rawRequest));
                 } catch (Exception e) {
                     e.printStackTrace();
                     response = HttpResponse.internalServerError();

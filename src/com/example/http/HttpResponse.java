@@ -61,4 +61,37 @@ public class HttpResponse {
         r.setBody("500 Internal Server Error".getBytes(StandardCharsets.UTF_8));
         return r;
     }
+
+    //新增一些注册登录会用到的状态码
+    public static HttpResponse created() {
+        HttpResponse r = new HttpResponse(201, "Created");
+        r.setHeader("Content-Type", "text/plain; charset=utf-8");
+        r.setBody("Created".getBytes(StandardCharsets.UTF_8));
+        return r;
+    }
+
+    public static HttpResponse badRequest() {
+        return badRequest("Bad Request");
+    }
+
+    public static HttpResponse badRequest(String message) {
+        HttpResponse r = new HttpResponse(400, "Bad Request");
+        r.setHeader("Content-Type", "text/plain; charset=utf-8");
+        r.setBody(message.getBytes(StandardCharsets.UTF_8));
+        return r;
+    }
+
+    public static HttpResponse unauthorized() {
+        HttpResponse r = new HttpResponse(401, "Unauthorized");
+        r.setHeader("Content-Type", "text/plain; charset=utf-8");
+        r.setBody("Unauthorized".getBytes(StandardCharsets.UTF_8));
+        return r;
+    }
+
+    public static HttpResponse conflict() {
+        HttpResponse r = new HttpResponse(409, "Conflict");
+        r.setHeader("Content-Type", "text/plain; charset=utf-8");
+        r.setBody("Conflict".getBytes(StandardCharsets.UTF_8));
+        return r;
+    }
 }

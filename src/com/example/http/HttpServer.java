@@ -26,7 +26,7 @@ public class HttpServer {
             try {
                 Socket clientSocket = serverSocket.accept();
                 // 提交到线程池处理
-                pool.submit(new ClientHandler(clientSocket, new SimpleRouter())); // SimpleRouter 是临时默认路由
+                pool.submit(new ClientHandler(clientSocket, new CompleteRouter())); 
             } catch (IOException e) {
                 if (!running) break;
                 e.printStackTrace();

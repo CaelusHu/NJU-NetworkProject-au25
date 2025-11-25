@@ -22,7 +22,7 @@ public class CompleteRouter implements Router {
             String method = request.getMethod();
             String path = request.getPath();
 
-            System.out.println("处理请求: " + method + " " + path);
+            System.out.println("handle request:  " + method + " " + path);
 
             // 路由分发
             if ("GET".equals(method)) {
@@ -74,7 +74,7 @@ public class CompleteRouter implements Router {
 
         if (username == null || username.isEmpty() ||
                 password == null || password.isEmpty()) {
-            return HttpResponse.badRequest("用户名和密码不能为空");
+            return HttpResponse.badRequest("username and password can not be empty");
         }
 
         if (userService.isUsernameExists(username)) {
@@ -83,7 +83,7 @@ public class CompleteRouter implements Router {
 
         boolean success = userService.register(username, password);
         if (success) {
-            return HttpResponse.okText("注册成功！欢迎，" + username);
+            return HttpResponse.okText("Welcome back " + username);
         } else {
             return HttpResponse.internalServerError();
         }
@@ -98,12 +98,12 @@ public class CompleteRouter implements Router {
 
         if (username == null || username.isEmpty() ||
                 password == null || password.isEmpty()) {
-            return HttpResponse.badRequest("用户名和密码不能为空");
+            return HttpResponse.badRequest("username and password can not be empty");
         }
 
         boolean success = userService.login(username, password);
         if (success) {
-            return HttpResponse.okText("登录成功！欢迎回来，" + username);
+            return HttpResponse.okText("Welcome back " + username);
         } else {
             return HttpResponse.unauthorized();
         }
@@ -136,6 +136,6 @@ public class CompleteRouter implements Router {
      * 用户数量页面
      */
     private HttpResponse userCountPage() {
-        return HttpResponse.okText("当前用户总数: " + userService.getUserCount());
+        return HttpResponse.okText("Current user counts: " + userService.getUserCount());
     }
 }

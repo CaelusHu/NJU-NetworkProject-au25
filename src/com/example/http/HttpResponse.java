@@ -25,13 +25,26 @@ public class HttpResponse {
     public byte[] toBytes() {
         StringBuilder sb = new StringBuilder();
         sb.append("HTTP/1.1 ").append(statusCode).append(" ").append(reason).append("\r\n");
-        headers.forEach((k,v) -> sb.append(k).append(": ").append(v).append("\r\n"));
+        headers.forEach((k, v) -> sb.append(k).append(": ").append(v).append("\r\n"));
         sb.append("\r\n");
         byte[] head = sb.toString().getBytes(StandardCharsets.UTF_8);
         byte[] res = new byte[head.length + body.length];
         System.arraycopy(head, 0, res, 0, head.length);
         System.arraycopy(body, 0, res, head.length, body.length);
         return res;
+    }
+    
+    // Getter methods for testing
+    public int getStatusCode() {
+        return statusCode;
+    }
+
+    public byte[] getBody() {
+        return body;
+    }
+
+    public String getReason() {
+        return reason;
     }
 
     public static HttpResponse okText(String text) {

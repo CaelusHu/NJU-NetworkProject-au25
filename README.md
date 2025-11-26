@@ -87,9 +87,6 @@
     hello
     ```
 
-<<<<<<< HEAD
-    保持模块之间只通过 request/response 对象通信，不要直接访问 socket。
-=======
     保持模块之间只通过 request/response 对象通信，不要直接访问 socket。
 
 ### User 部分 （负责人：周立涛 241250098）
@@ -190,4 +187,4 @@
     ```
 
     模块之间通过 HttpRequest / HttpResponse 对象通信，不直接操作 Socket。
->>>>>>> origin/PartB
+    

@@ -26,9 +26,6 @@ bin/
 .vscode/
 
 ### Mac OS ###
-<<<<<<< HEAD
-.DS_Store
-=======
 .DS_Store
 
 ### Java
@@ -38,4 +35,3 @@ bin/
 *.ear
 *.logs
 *.ctxt
->>>>>>> origin/PartB

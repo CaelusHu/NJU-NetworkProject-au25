@@ -26,4 +26,16 @@ bin/
 .vscode/
 
 ### Mac OS ###
+<<<<<<< HEAD
 .DS_Store
+=======
+.DS_Store
+
+### Java
+*.class
+*.jar
+*.war
+*.ear
+*.logs
+*.ctxt
+>>>>>>> origin/PartB

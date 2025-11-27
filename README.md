@@ -187,4 +187,22 @@
     ```
 
     模块之间通过 HttpRequest / HttpResponse 对象通信，不直接操作 Socket。
+
+### HttpClient 客户端实现部分 （负责人：朱鸣涛 241250048）
+
+1. HttpClient.java部分，实现客户端
+
+- 测试发送请求报文（get) 测试404
+![1](testImages/1.png); 
+
+- 测试post请求， 测试注册/登录
+![2](testImages/2.png);
     
+- 测试重定向
+![3](testImages/3.png);
+
+- 测试MIME类型
+![4](testImages/4.png);
+
+- 测试缓存（304）
+![5](testImages/5.png);

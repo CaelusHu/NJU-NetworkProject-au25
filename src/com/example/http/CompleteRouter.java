@@ -47,6 +47,23 @@ public class CompleteRouter implements Router {
             return homePage();
         } else if ("/user/count".equals(path)) {
             return userCountPage();
+        } else if ("/redirect".equals(path)) {  // 测试301重定向
+            return HttpResponse.movedPermanently("/index");  // 重定向到/index
+        } else if ("/temp-redirect".equals(path)) {  // 测试302重定向（可选，额外测试）
+            return HttpResponse.found("/index");
+        } else if ("/cached".equals(path)) {  // 测试304缓存
+            String ifNoneMatch = request.getHeader("If-None-Match");
+            if ("\"fixed-2025\"".equals(ifNoneMatch)) {
+                return HttpResponse.notModified();  // 返回 304
+            }
+
+            HttpResponse r = HttpResponse.okText("以缓存的内容");
+            r.setETag("fixed-2025");
+            return r;
+        } else if ("/image".equals(path)) {  // 测试非文本MIME (image)
+            // 简单生成一个字节数组作为图片数据
+            byte[] imageData = new byte[]{ (byte)0x89, 0x50, 0x4E, 0x47, 0x0D, 0x0A, 0x1A, 0x0A };  // 最小PNG头
+            return HttpResponse.okImage(imageData, "png");
         } else {
             return HttpResponse.notFound();
         }
